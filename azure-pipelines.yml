@@ -1,17 +1,18 @@
 name: Node.js Package
 
-on:
-  release:
-    types: [created]
+trigger:
+  branches:
+    include:
+      - main
 
 jobs:
   build:
     runs-on: Windows
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
         with:
-          node-version: 16
+          node-version: '16.x'
       - run: npm install 
       - run: npm install playwright
       - run: npm test
