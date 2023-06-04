@@ -1,0 +1,30 @@
+# Node.js
+# Build a general Node.js project with npm.
+# Add steps that analyze code, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
+
+name: Node.js Package
+
+trigger:
+  branches:
+    include:
+      - main
+jobs:
+  build:
+    runs-on: Windows
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16.x'
+      - name: Install dependencies
+        run : npm install 
+      - name: Install Playwright
+        run : npm install playwright
+      - name: Run tests
+        run : npm test
+      - name: Publish package
+        run : npm publish
+
