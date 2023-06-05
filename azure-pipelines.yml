@@ -14,7 +14,6 @@ jobs:
         with:
           node-version: '16.x'
       - run: npm install 
-      - run: npm install playwright
       - run: npm test
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
